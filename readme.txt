@@ -2,8 +2,8 @@
 ##
 ##        Mod title:  Cash Mod
 ##
-##      Mod version:  1.5.2
-##   Works on FluxBB:  1.5.4
+##      Mod version:  1.5.3
+##   Works on FluxBB:  1.5.6
 ##     Release date:  2013-10-01
 ##           Author:  GeonoTRON2000 + Apache Kof (Pandark) + Gary(13579) Schilling
 ##
@@ -18,7 +18,7 @@
 ##
 ##            Notes:  The Original Cash Mod 1.0.1 was made by Gary(13579) Schilling.
 ##                    Localisation of its and other changes 1.0.1 from made by Apache Kof (Pandark).
-##                    Upgrade to 1.5.4 made by GeonoTRON2000.
+##                    Upgrade to FluxBB 1.5 made by GeonoTRON2000.
 ##
 ##       DISCLAIMER:  Please note that 'mods' are not officially supported by
 ##                    FluxBB. Installation of this modification is done at your
@@ -295,19 +295,45 @@ $result = $db->query('SELECT u.cm_cash, u.cm_bank, u.username, u.email, u.title,
 	$user_activity[] = '<dd>'.forum_number_format($user['cm_bank']).'</dd>';
 
 #
-#---------[ 31. SAVE/UPLOAD ]---------------------------------------------------
+#---------[ 31. FIND ]---------------------------------------------------
+#
+
+		if ($pun_user['g_id'] == PUN_ADMIN)
+			$posts_field .= '<label>'.$lang_common['Posts'].'<br /><input type="text" name="num_posts" value="'.$user['num_posts'].'" size="8" maxlength="8" /><br /></label>';
+		else if ($pun_config['o_show_post_count'] == '1' || $pun_user['is_admmod'])
+			$posts_actions[] = sprintf($lang_profile['Posts info'], forum_number_format($user['num_posts']));
+
+#
+#---------[ 32. REPLACE WITH ]---------------------------------------------------
+#
+
+		if ($pun_user['g_id'] == PUN_ADMIN)
+		{
+			$posts_field .= '<label>'.$lang_common['Posts'].'<br /><input type="text" name="num_posts" value="'.$user['num_posts'].'" size="8" maxlength="8" /><br /></label>';
+			$posts_field .= '<label>'.ucwords($pun_config['cm_cur_name']).'<br /><input type="text" name="cm_cash" value="'.$user['cm_cash'].'" size="8" maxlength="8" /><br /></label>'."\n";
+			$posts_field .= ($pun_config['cm_bank'] == 1) ? '<label>'.$lang_common['Bank'].'<br /><input type="text" name="cm_bank" value="'.$user['cm_bank'].'" size="8" maxlength="8" /><br /></label>'."\n" : '';
+		}
+		else if ($pun_config['o_show_post_count'] == '1' || $pun_user['is_admmod'])
+		{
+			$posts_actions[] = sprintf($lang_profile['Posts info'], forum_number_format($user['num_posts']));
+			$posts_actions[] = ucwords($pun_config['cm_cur_name']).': '.forum_number_format($user['cm_cash']);
+			$posts_actions[] = $lang_common['Bank'].': '.forum_number_format($user['cm_bank']);
+		}
+
+#
+#---------[ 33. SAVE/UPLOAD ]---------------------------------------------------
 #
 
 profile.php
 
 #
-#---------[ 32. OPEN ]---------------------------------------------------
+#---------[ 34. OPEN ]---------------------------------------------------
 #
 
 lang/English/common.php
 
 #
-#---------[ 33. FIND ]---------------------------------------------------
+#---------[ 35. FIND ]---------------------------------------------------
 #
 
 'Mark all as read'					=>	'Mark all topics as read',
@@ -315,7 +341,7 @@ lang/English/common.php
 'Title separator'					=>	' / ',
 
 #
-#---------[ 34. AFTER, ADD ]---------------------------------------------------
+#---------[ 36. AFTER, ADD ]---------------------------------------------------
 #
 
 // Cash Mod
@@ -324,7 +350,7 @@ lang/English/common.php
 'Donate'				=>	'Donate',
 
 #
-#---------[ 35. SAVE/UPLOAD ]---------------------------------------------------
+#---------[ 37. SAVE/UPLOAD ]---------------------------------------------------
 #
 
 lang/English/common.php

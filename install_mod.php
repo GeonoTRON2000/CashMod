@@ -3,13 +3,13 @@
 
 // Some info about your mod.
 $mod_title      = 'Cash Mod';
-$mod_version    = '1.5.2';
-$release_date   = '2006-03-26';
-$author         = 'Pandark (Apache Kof)';
-$author_email   = 'apache.kof@gmail.com';
+$mod_version    = '1.5.3';
+$release_date   = '2014-01-26';
+$author         = 'GeonoTRON2000';
+$author_email   = 'geono@thegt.org';
 
 // Versions of PunBB this mod was created for. Minor variations (i.e. 1.2.4 vs 1.2.5) will be allowed, but a warning will be displayed.
-$punbb_versions	= array('1.5.4');
+$punbb_versions	= array('1.5.6');
 
 // Set this to false if you haven't implemented the restore function (see below)
 $mod_restore	= true;
