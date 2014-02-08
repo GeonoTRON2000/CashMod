@@ -3,7 +3,7 @@
 
 // Some info about your mod.
 $mod_title      = 'Cash Mod';
-$mod_version    = '1.5.3';
+$mod_version    = '1.5.4.1';
 $release_date   = '2014-01-26';
 $author         = 'GeonoTRON2000';
 $author_email   = 'geono@thegt.org';
