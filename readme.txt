@@ -2,7 +2,7 @@
 ##
 ##        Mod title:  Cash Mod
 ##
-##      Mod version:  1.5.3
+##      Mod version:  1.5.4.1
 ##   Works on FluxBB:  1.5.6
 ##     Release date:  2013-10-01
 ##           Author:  GeonoTRON2000 + Apache Kof (Pandark) + Gary(13579) Schilling
