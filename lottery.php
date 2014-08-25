@@ -19,7 +19,7 @@ if ($pun_config['cm_lottery'] == 0)
 if (isset($_POST['submit'])) {
 	if ($pun_user['cm_cash'] < $pun_config['cm_lottery_cost'])
 		message($lang_cash['Not_enough'].' '.$pun_config['cm_cur_name'].' '.$lang_cash['To_buy_ticket'].'.');
-	if (rand(1, 100) < $pun_config['cm_lottery_chance']) {
+	if (rand(1, 100) <= $pun_config['cm_lottery_chance']) {
 		// They win!
 		$db->query('UPDATE '.$db->prefix.'users SET cm_cash=cm_cash+('.$pun_config['cm_lottery_pot'].'-'.$pun_config['cm_lottery_cost'].') WHERE id='.$pun_user['id'].' LIMIT 1');
 		$db->query('UPDATE '.$db->prefix.'config SET conf_value='.$pun_config['cm_lottery_cost'].' WHERE conf_name=\'cm_lottery_pot\' LIMIT 1');
